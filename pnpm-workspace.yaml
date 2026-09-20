@@ -1,6 +1,10 @@
 packages:
   - "."
 
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
+strictDepBuilds: false
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+  fsevents: true
+  unrs-resolver: true
