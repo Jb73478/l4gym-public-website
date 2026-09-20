@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npx vinext build --config vite.netlify.config.ts"
   publish = "dist/client"
 
 [build.environment]
