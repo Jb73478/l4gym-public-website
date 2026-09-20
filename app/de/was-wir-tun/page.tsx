@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import {GermanInfo} from "../GermanInfo";export const metadata:Metadata={title:"Was wir tun",description:"Wie L4Gym Geräteidentität, Studiobetrieb und technischen Service verbindet."};export default function Page(){return <GermanInfo page="what"/>}

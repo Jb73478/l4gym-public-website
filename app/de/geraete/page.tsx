@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import {GermanInfo} from "../GermanInfo";export const metadata:Metadata={title:"Geräte",description:"Kommerzielle Fitnessgeräte, Eigenmarken und Lebenszyklusunterstützung von L4Gym."};export default function Page(){return <GermanInfo page="equipment"/>}

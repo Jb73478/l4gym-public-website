@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import {GermanInfo} from "../GermanInfo";export const metadata:Metadata={title:"Service & Support",description:"L4Gym verbindet Gerätestörungen, Geräteakten und technische Serviceabläufe."};export default function Page(){return <GermanInfo page="service"/>}

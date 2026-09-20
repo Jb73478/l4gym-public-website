@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import {GermanInfo} from "../GermanInfo";export const metadata:Metadata={title:"Vertrieb & Partner",description:"Zusammenarbeit mit L4Gym bei Vertrieb, Geräten, Service und kommerziellen Fitnesspartnerschaften."};export default function Page(){return <GermanInfo page="partners"/>}

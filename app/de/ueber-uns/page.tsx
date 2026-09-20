@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import {GermanInfo} from "../GermanInfo";export const metadata:Metadata={title:"Über L4Gym",description:"Über L4Gym und Gründer Jamie Bevan."};export default function Page(){return <GermanInfo page="about"/>}

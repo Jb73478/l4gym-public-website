@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import {GermanInfo} from "../GermanInfo";export const metadata:Metadata={title:"MachineDNA",description:"MachineDNA gibt Fitnessgeräten eine QR-verknüpfte digitale Identität und einen Lebenszyklusdatensatz."};export default function Page(){return <GermanInfo page="dna"/>}

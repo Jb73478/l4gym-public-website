@@ -1,0 +1,1 @@
+import type {Metadata} from "next";import {GermanInfo} from "../GermanInfo";export const metadata:Metadata={title:"Hersteller & OEM",description:"L4Gym Möglichkeiten für Hersteller, OEM- und Eigenmarkenpartner."};export default function Page(){return <GermanInfo page="makers"/>}
