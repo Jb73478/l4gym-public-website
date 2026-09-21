@@ -1,10 +1,11 @@
 [build]
-  command = "npx vinext build --config vite.netlify.config.ts"
+  command = "npx vinext build"
   publish = "dist/client"
 
 [build.environment]
   NODE_VERSION = "22"
   PNPM_FLAGS = "--no-frozen-lockfile"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [[headers]]
   for = "/*"
