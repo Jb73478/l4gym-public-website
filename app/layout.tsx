@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header, Footer } from "@/components/SiteChrome";
+import { Header, Footer, SkipLink } from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.l4gym.com"),
@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body><a className="skip-link" href="#main">Skip to content</a><Header/><main id="main">{children}</main><Footer/></body>
+      <body><SkipLink/><Header/><main id="main">{children}</main><Footer/></body>
     </html>
   );
 }
