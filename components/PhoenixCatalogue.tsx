@@ -1,5 +1,5 @@
 "use client";
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import type { PhoenixLocale, PhoenixProduct } from "@/lib/phoenix-products";
 import { phoenixCategories, phoenixProducts } from "@/lib/phoenix-products";
 
@@ -226,25 +226,35 @@ function PhoenixEnquiryForm({
   product?: PhoenixProduct;
 }) {
   const de = locale === "de";
-  function prepareEmail(event: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const subject = `Phoenix Strength enquiry — ${product ? `${product.name}${product.model ? ` (${product.model})` : ""}` : "commercial project"}`;
-    const lines = [
-      "Phoenix Strength qualified enquiry", "",
-      `Customer / company: ${data.get("customer")}`,
-      `Email: ${data.get("email")}`,
-      `Country: ${data.get("country")}`,
-      `Phone / WhatsApp: ${data.get("phone_whatsapp") || "Not supplied"}`,
-      `Equipment interest: ${data.get("equipment_interest")}`,
-      `Purchasing timeframe: ${data.get("purchasing_timeframe")}`,
-      "", "Facility requirements:", String(data.get("facility_requirements")),
-      "", "Source: L4Gym Phoenix Strength website",
-    ];
-    window.location.href = `mailto:jamie@l4gym.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    data.set("submitted_at", new Date().toISOString());
+    setStatus("sending");
+    try {
+      const response = await fetch("/phoenix-enquiry.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(Array.from(data.entries()).map(([key,value])=>[key,String(value)])).toString(),
+      });
+      if (!response.ok) throw new Error(`Submission failed: ${response.status}`);
+      form.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
   return (
-    <form className="phoenix-form" onSubmit={prepareEmail}>
+    <form className="phoenix-form" name="phoenix-strength-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitEnquiry}>
+      <input type="hidden" name="form-name" value="phoenix-strength-enquiry" />
+      <input type="hidden" name="lead_source" value="l4gym-phoenix-catalogue" />
+      <input type="hidden" name="language" value={locale} />
+      <input type="hidden" name="product_name" value={product?.name || "Commercial project"} />
+      <input type="hidden" name="product_sku" value={product?.model || ""} />
+      <input type="hidden" name="subject" value="New Phoenix Strength commercial enquiry" data-remove-prefix />
+      <p className="form-honeypot" aria-hidden="true"><label>Do not complete this field<input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
       <div>
         <label htmlFor="customer">
           {de ? "Name / Unternehmen" : "Name / company"}
@@ -321,14 +331,18 @@ function PhoenixEnquiryForm({
         <input id="phone" name="phone_whatsapp" />
       </div>
       <div className="full">
-        <button className="button primary" type="submit">
-          {de ? "Anfrage per E-Mail vorbereiten" : "Prepare email enquiry"}
+        <label className="consent"><input type="checkbox" name="privacy_consent" value="yes" required /> <span>{de?<>Ich habe die <a href="/de/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung dieser Anfrage zu.</>:<>I have read the <a href="/privacy" target="_blank">Privacy Policy</a> and agree to the processing of my details to handle this enquiry.</>}</span></label>
+      </div>
+      <div className="full">
+        <button className="button primary" type="submit" disabled={status === "sending"}>
+          {status==="sending"?(de?"Wird gesendet…":"Sending…"):(de?"Anfrage senden":"Send enquiry")}
         </button>
         <p className="form-note">
           {de
-            ? "Es erfolgt keine Onlinezahlung. Verfügbarkeit, Spezifikationen und Angebot werden direkt bestätigt."
-            : "No online payment is taken. Availability, specifications and quotation are confirmed directly."}
+            ? "Ihre Anfrage wird sicher an L4Gym übermittelt. Es erfolgt keine Onlinezahlung."
+            : "Your enquiry is submitted securely to L4Gym. No online payment is taken."}
         </p>
+        <div className={`form-status ${status}`} role="status" aria-live="polite">{status==="success"&&(de?"Vielen Dank. Ihre Anfrage wurde erfolgreich gesendet. L4Gym meldet sich direkt bei Ihnen.":"Thank you. Your enquiry was sent successfully. L4Gym will contact you directly.")}{status==="error"&&(de?"Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an jamie@l4gym.com.":"Your enquiry could not be sent. Please try again or email jamie@l4gym.com.")}</div>
       </div>
     </form>
   );
