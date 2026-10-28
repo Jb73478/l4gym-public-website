@@ -17,6 +17,7 @@ const german = readFileSync(requiredRoutes[1], "utf8");
 const combined = `${english}\n${german}`;
 const component = readFileSync("components/PhoenixCatalogue.tsx", "utf8");
 const chrome = readFileSync("components/SiteChrome.tsx", "utf8");
+const styles = readFileSync("app/globals.css", "utf8");
 const home = readFileSync("dist/client/index.html", "utf8");
 const homeDe = readFileSync("dist/client/de.html", "utf8");
 const blueprint = readFileSync("public/phoenix-enquiry.html", "utf8");
@@ -36,6 +37,9 @@ if (component.includes("window.location.href = `mailto:")) throw new Error("Lega
 if (!component.includes('name="privacy_consent"')) throw new Error("Privacy consent field is missing");
 if (!english.includes("REQUEST FULL PHOENIX CATALOGUE") || !german.includes("VOLLSTÄNDIGEN PHOENIX KATALOG ANFORDERN")) throw new Error("Bilingual full-catalogue request CTA is missing");
 if (!component.includes("L4G-PHX-") || !component.includes("Introduced by L4Gym / Jamie Bevan")) throw new Error("L4Gym lead reference or attribution is missing");
+if (!styles.includes(".phoenix-home-grid,.phoenix-hero-grid{grid-template-columns:minmax(0,1fr)}")) throw new Error("Phoenix mobile hero is not forced to one column");
+if (!styles.includes(".phoenix-hero .button-row .button{width:100%")) throw new Error("Phoenix mobile CTAs are not constrained to the viewport");
+if (!styles.includes("@media(max-width:380px){.phoenix-hero h1{font-size:2.2rem}")) throw new Error("Phoenix narrow-mobile typography rule is missing");
 if (!chrome.includes("PHOENIX STRENGTH EQUIPMENT") || !chrome.includes("PHOENIX STRENGTH GERÄTE")) throw new Error("Bilingual Phoenix navigation CTA is missing");
 if (!home.includes("PHOENIX STRENGTH — COMMERCIAL GYM EQUIPMENT")) throw new Error("English homepage Phoenix promotion is missing");
 if (!homeDe.includes("PHOENIX STRENGTH — KOMMERZIELLE FITNESSGERÄTE")) throw new Error("German homepage Phoenix promotion is missing");
