@@ -10,7 +10,7 @@ const root = (locale: PhoenixLocale) =>
 const text = {
   en: {
     eyebrow: "Phoenix Strength",
-    title: "Commercial rigs and strength equipment built around your facility.",
+    title: "PHOENIX STRENGTH — COMMERCIAL GYM EQUIPMENT",
     intro:
       "L4Gym works with Phoenix Strength to support commercial rig projects, complete gym configurations and selected strength equipment enquiries across Europe and international markets.",
     fitout: "Discuss a Complete Gym Fit-Out",
@@ -24,7 +24,7 @@ const text = {
   },
   de: {
     eyebrow: "Phoenix Strength",
-    title: "Kommerzielle Rigs und Kraftgeräte passend zu Ihrer Anlage.",
+    title: "PHOENIX STRENGTH — KOMMERZIELLE FITNESSGERÄTE",
     intro:
       "L4Gym arbeitet mit Phoenix Strength zusammen und unterstützt Anfragen zu kommerziellen Rig-Projekten, kompletten Studioausstattungen und ausgewählten Kraftgeräten in Europa und internationalen Märkten.",
     fitout: "Komplette Studioausstattung besprechen",
@@ -49,33 +49,30 @@ export function PhoenixLanding({ locale }: { locale: PhoenixLocale }) {
             <h1>{t.title}</h1>
             <p className="lead">{t.intro}</p>
             <div className="button-row">
-              <a className="button primary" href={`${root(locale)}#enquiry`}>
-                {t.fitout}
+              <a className="button phoenix-red" href="#categories">
+                {locale === "de" ? "Geräte entdecken" : "Browse Equipment"}
               </a>
               <a
-                className="button secondary"
+                className="button phoenix-outline"
                 href={`${root(locale)}/rigs-racks`}
               >
                 {t.rig}
               </a>
+              <a className="button phoenix-outline" href="#enquiry">{t.fitout}</a>
+              <a className="button phoenix-outline" href="#enquiry">{t.quote}</a>
             </div>
           </div>
-          <div className="phoenix-hero-card">
-            <span>PHOENIX STRENGTH</span>
-            <strong>
-              {locale === "de"
-                ? "Rigs zuerst. Ganze Anlagen geplant."
-                : "Rigs first. Complete facilities considered."}
-            </strong>
-            <p>
-              {locale === "de"
-                ? "Australische Marke · kommerzielle Fertigung · internationale Anfragen"
-                : "Australian brand · commercial manufacturing · international enquiries"}
-            </p>
+          <div className="phoenix-hero-visual">
+            <img src={phoenixProducts[0].image} alt={locale === "de" ? "Phoenix Strength kommerzielles Rig-System" : "Phoenix Strength commercial rig system"} />
+            <div className="phoenix-hero-card">
+              <span>L4GYM × PHOENIX STRENGTH</span>
+              <strong>{locale === "de" ? "Rigs zuerst. Ganze Anlagen geplant." : "Rigs first. Complete facilities considered."}</strong>
+              <p>{locale === "de" ? "Australische Marke · kommerzielle Fertigung · internationale Anfragen" : "Australian brand · commercial manufacturing · international enquiries"}</p>
+            </div>
           </div>
         </div>
       </section>
-      <section className="section">
+      <section className="section" id="categories">
         <div className="shell">
           <div className="section-heading">
             <p className="eyebrow">{t.categories}</p>
@@ -208,8 +205,8 @@ export function EnquirySection({
           </div>
           <p>
             {locale === "de"
-              ? "Teilen Sie uns die wichtigsten Projektdaten mit. Ihre E-Mail-Anwendung erstellt daraus eine strukturierte Anfrage an L4Gym."
-              : "Share the essential project details. Your email application will prepare a structured enquiry to L4Gym."}
+              ? "Teilen Sie uns die wichtigsten Projektdaten mit. Das sichere Formular übermittelt eine strukturierte Anfrage direkt an L4Gym."
+              : "Share the essential project details. The secure form sends a structured enquiry directly to L4Gym."}
           </p>
         </div>
         <PhoenixEnquiryForm locale={locale} product={product} />

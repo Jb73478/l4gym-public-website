@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 
 const requiredRoutes = [
   "dist/client/equipment/phoenix-strength.html",
@@ -16,6 +16,9 @@ const english = readFileSync(requiredRoutes[0], "utf8");
 const german = readFileSync(requiredRoutes[1], "utf8");
 const combined = `${english}\n${german}`;
 const component = readFileSync("components/PhoenixCatalogue.tsx", "utf8");
+const chrome = readFileSync("components/SiteChrome.tsx", "utf8");
+const home = readFileSync("dist/client/index.html", "utf8");
+const homeDe = readFileSync("dist/client/de.html", "utf8");
 const blueprint = readFileSync("public/phoenix-enquiry.html", "utf8");
 const requiredFields = ["customer", "email", "country", "purchasing_timeframe", "equipment_interest", "facility_requirements"];
 for (const field of requiredFields) {
@@ -31,4 +34,11 @@ if (!component.includes('netlify-honeypot="bot-field"')) throw new Error("Honeyp
 if (!component.includes('fetch("/phoenix-enquiry.html"')) throw new Error("Direct Netlify submission is missing");
 if (component.includes("window.location.href = `mailto:")) throw new Error("Legacy mailto submission remains active");
 if (!component.includes('name="privacy_consent"')) throw new Error("Privacy consent field is missing");
+if (!chrome.includes("PHOENIX STRENGTH EQUIPMENT") || !chrome.includes("PHOENIX STRENGTH GERÄTE")) throw new Error("Bilingual Phoenix navigation CTA is missing");
+if (!home.includes("PHOENIX STRENGTH — COMMERCIAL GYM EQUIPMENT")) throw new Error("English homepage Phoenix promotion is missing");
+if (!homeDe.includes("PHOENIX STRENGTH — KOMMERZIELLE FITNESSGERÄTE")) throw new Error("German homepage Phoenix promotion is missing");
+for (const directory of ["dist/client/equipment/phoenix-strength/products", "dist/client/de/geraete/phoenix-strength/products"]) {
+  const productPages = readdirSync(directory).filter((name) => name.endsWith(".html"));
+  if (productPages.length !== 15) throw new Error(`Expected 15 product pages in ${directory}, found ${productPages.length}`);
+}
 console.log("Phoenix catalogue validation passed.");
