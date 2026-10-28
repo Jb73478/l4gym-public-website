@@ -40,6 +40,7 @@ const text = {
 
 export function PhoenixLanding({ locale }: { locale: PhoenixLocale }) {
   const t = text[locale];
+  const [requestType, setRequestType] = useState("catalogue_request");
   return (
     <>
       <section className="phoenix-hero">
@@ -49,6 +50,9 @@ export function PhoenixLanding({ locale }: { locale: PhoenixLocale }) {
             <h1>{t.title}</h1>
             <p className="lead">{t.intro}</p>
             <div className="button-row">
+              <a className="button phoenix-red" href="#enquiry" onClick={() => setRequestType("catalogue_request")}>
+                {locale === "de" ? "VOLLSTÄNDIGEN PHOENIX KATALOG ANFORDERN" : "REQUEST FULL PHOENIX CATALOGUE"}
+              </a>
               <a className="button phoenix-red" href="#categories">
                 {locale === "de" ? "Geräte entdecken" : "Browse Equipment"}
               </a>
@@ -58,8 +62,8 @@ export function PhoenixLanding({ locale }: { locale: PhoenixLocale }) {
               >
                 {t.rig}
               </a>
-              <a className="button phoenix-outline" href="#enquiry">{t.fitout}</a>
-              <a className="button phoenix-outline" href="#enquiry">{t.quote}</a>
+              <a className="button phoenix-outline" href="#enquiry" onClick={() => setRequestType("complete_gym_fitout")}>{t.fitout}</a>
+              <a className="button phoenix-outline" href="#enquiry" onClick={() => setRequestType("quotation")}>{t.quote}</a>
             </div>
           </div>
           <div className="phoenix-hero-visual">
@@ -124,7 +128,7 @@ export function PhoenixLanding({ locale }: { locale: PhoenixLocale }) {
           />
         </div>
       </section>
-      <EnquirySection locale={locale} />
+      <EnquirySection locale={locale} defaultRequestType={requestType} />
       <div className="shell phoenix-notice">
         <p>{t.notice}</p>
       </div>
@@ -181,9 +185,11 @@ export function ProductGrid({
 export function EnquirySection({
   locale,
   product,
+  defaultRequestType = "general_equipment_enquiry",
 }: {
   locale: PhoenixLocale;
   product?: PhoenixProduct;
+  defaultRequestType?: string;
 }) {
   return (
     <section className="section phoenix-enquiry" id="enquiry">
@@ -209,7 +215,7 @@ export function EnquirySection({
               : "Share the essential project details. The secure form sends a structured enquiry directly to L4Gym."}
           </p>
         </div>
-        <PhoenixEnquiryForm locale={locale} product={product} />
+        <PhoenixEnquiryForm key={defaultRequestType} locale={locale} product={product} defaultRequestType={defaultRequestType} />
       </div>
     </section>
   );
@@ -218,16 +224,21 @@ export function EnquirySection({
 function PhoenixEnquiryForm({
   locale,
   product,
+  defaultRequestType,
 }: {
   locale: PhoenixLocale;
   product?: PhoenixProduct;
+  defaultRequestType: string;
 }) {
   const de = locale === "de";
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [leadReference, setLeadReference] = useState("");
   async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
+    const reference = `L4G-PHX-${Date.now().toString(36).toUpperCase()}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
+    data.set("lead_reference", reference);
     data.set("submitted_at", new Date().toISOString());
     setStatus("sending");
     try {
@@ -238,6 +249,7 @@ function PhoenixEnquiryForm({
       });
       if (!response.ok) throw new Error(`Submission failed: ${response.status}`);
       form.reset();
+      setLeadReference(reference);
       setStatus("success");
     } catch {
       setStatus("error");
@@ -247,20 +259,40 @@ function PhoenixEnquiryForm({
     <form className="phoenix-form" name="phoenix-strength-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitEnquiry}>
       <input type="hidden" name="form-name" value="phoenix-strength-enquiry" />
       <input type="hidden" name="lead_source" value="l4gym-phoenix-catalogue" />
+      <input type="hidden" name="lead_reference" value="" />
+      <input type="hidden" name="l4gym_attribution" value="Introduced by L4Gym / Jamie Bevan" />
+      <input type="hidden" name="sales_channel" value="l4gym.com" />
+      <input type="hidden" name="opportunity_stage" value="new_website_lead" />
+      <input type="hidden" name="introduction_status" value="captured_by_l4gym" />
+      <input type="hidden" name="commission_status" value="not_yet_applicable" />
       <input type="hidden" name="language" value={locale} />
       <input type="hidden" name="product_name" value={product?.name || "Commercial project"} />
       <input type="hidden" name="product_sku" value={product?.model || ""} />
       <input type="hidden" name="subject" value="New Phoenix Strength commercial enquiry" data-remove-prefix />
       <p className="form-honeypot" aria-hidden="true"><label>Do not complete this field<input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
       <div>
-        <label htmlFor="customer">
-          {de ? "Name / Unternehmen" : "Name / company"}
-        </label>
-        <input id="customer" name="customer" required />
+        <label htmlFor="customer_name">{de ? "Name" : "Name"}</label>
+        <input id="customer_name" name="customer_name" required autoComplete="name" />
+      </div>
+      <div>
+        <label htmlFor="company">{de ? "Unternehmen" : "Company"}</label>
+        <input id="company" name="company" required autoComplete="organization" />
       </div>
       <div>
         <label htmlFor="email">{de ? "E-Mail" : "Email"}</label>
         <input id="email" name="email" type="email" required />
+      </div>
+      <div>
+        <label htmlFor="request_type">{de ? "Art der Anfrage" : "Enquiry type"}</label>
+        <select id="request_type" name="request_type" required defaultValue={defaultRequestType}>
+          <option value="catalogue_request">{de ? "Vollständigen Phoenix Katalog anfordern" : "Request full Phoenix catalogue"}</option>
+          <option value="quotation">{de ? "Angebot anfordern" : "Request a quotation"}</option>
+          <option value="rig_configuration">{de ? "Kommerzielles Rig konfigurieren" : "Configure a commercial rig"}</option>
+          <option value="complete_gym_fitout">{de ? "Komplette Studioausstattung" : "Complete gym fit-out"}</option>
+          <option value="product_enquiry">{de ? "Produktanfrage" : "Product enquiry"}</option>
+          <option value="distributor_enquiry">{de ? "Vertriebspartneranfrage" : "Distributor enquiry"}</option>
+          <option value="general_equipment_enquiry">{de ? "Allgemeine Geräteanfrage" : "General equipment enquiry"}</option>
+        </select>
       </div>
       <div>
         <label htmlFor="country">{de ? "Land" : "Country"}</label>
@@ -339,7 +371,7 @@ function PhoenixEnquiryForm({
             ? "Ihre Anfrage wird sicher an L4Gym übermittelt. Es erfolgt keine Onlinezahlung."
             : "Your enquiry is submitted securely to L4Gym. No online payment is taken."}
         </p>
-        <div className={`form-status ${status}`} role="status" aria-live="polite">{status==="success"&&(de?"Vielen Dank. Ihre Anfrage wurde erfolgreich gesendet. L4Gym meldet sich direkt bei Ihnen.":"Thank you. Your enquiry was sent successfully. L4Gym will contact you directly.")}{status==="error"&&(de?"Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an jamie@l4gym.com.":"Your enquiry could not be sent. Please try again or email jamie@l4gym.com.")}</div>
+        <div className={`form-status ${status}`} role="status" aria-live="polite">{status==="success"&&(de?`Vielen Dank. Ihre Anfrage wurde erfolgreich gesendet. Referenz: ${leadReference}. L4Gym meldet sich direkt bei Ihnen.`:`Thank you. Your enquiry was sent successfully. Reference: ${leadReference}. L4Gym will contact you directly.`)}{status==="error"&&(de?"Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an jamie@l4gym.com.":"Your enquiry could not be sent. Please try again or email jamie@l4gym.com.")}</div>
       </div>
     </form>
   );
@@ -373,7 +405,7 @@ export function PhoenixCategoryPage({
           <ProductGrid locale={locale} products={products} />
         </div>
       </section>
-      <EnquirySection locale={locale} />
+      <EnquirySection locale={locale} defaultRequestType={slug === "rigs-racks" ? "rig_configuration" : "quotation"} />
     </>
   );
 }
@@ -448,7 +480,7 @@ export function PhoenixProductPage({
           )}
         </div>
       </section>
-      <EnquirySection locale={locale} product={product} />
+      <EnquirySection locale={locale} product={product} defaultRequestType="product_enquiry" />
       <div className="shell phoenix-notice">
         <p>{text[locale].notice}</p>
       </div>

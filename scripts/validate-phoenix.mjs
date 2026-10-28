@@ -20,7 +20,7 @@ const chrome = readFileSync("components/SiteChrome.tsx", "utf8");
 const home = readFileSync("dist/client/index.html", "utf8");
 const homeDe = readFileSync("dist/client/de.html", "utf8");
 const blueprint = readFileSync("public/phoenix-enquiry.html", "utf8");
-const requiredFields = ["customer", "email", "country", "purchasing_timeframe", "equipment_interest", "facility_requirements"];
+const requiredFields = ["customer_name", "company", "email", "country", "request_type", "purchasing_timeframe", "equipment_interest", "facility_requirements", "lead_reference", "l4gym_attribution", "sales_channel", "opportunity_stage", "introduction_status", "commission_status"];
 for (const field of requiredFields) {
   if (!combined.includes(`name=\"${field}\"`)) throw new Error(`Missing enquiry field: ${field}`);
 }
@@ -34,6 +34,8 @@ if (!component.includes('netlify-honeypot="bot-field"')) throw new Error("Honeyp
 if (!component.includes('fetch("/phoenix-enquiry.html"')) throw new Error("Direct Netlify submission is missing");
 if (component.includes("window.location.href = `mailto:")) throw new Error("Legacy mailto submission remains active");
 if (!component.includes('name="privacy_consent"')) throw new Error("Privacy consent field is missing");
+if (!english.includes("REQUEST FULL PHOENIX CATALOGUE") || !german.includes("VOLLSTÄNDIGEN PHOENIX KATALOG ANFORDERN")) throw new Error("Bilingual full-catalogue request CTA is missing");
+if (!component.includes("L4G-PHX-") || !component.includes("Introduced by L4Gym / Jamie Bevan")) throw new Error("L4Gym lead reference or attribution is missing");
 if (!chrome.includes("PHOENIX STRENGTH EQUIPMENT") || !chrome.includes("PHOENIX STRENGTH GERÄTE")) throw new Error("Bilingual Phoenix navigation CTA is missing");
 if (!home.includes("PHOENIX STRENGTH — COMMERCIAL GYM EQUIPMENT")) throw new Error("English homepage Phoenix promotion is missing");
 if (!homeDe.includes("PHOENIX STRENGTH — KOMMERZIELLE FITNESSGERÄTE")) throw new Error("German homepage Phoenix promotion is missing");
