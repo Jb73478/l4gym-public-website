@@ -1,7 +1,7 @@
 "use client";
 import catalogues from "@/lib/phoenix-v3/catalogues.json";
 type Catalogue = keyof typeof catalogues;
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import type { PhoenixLocale, PhoenixProduct } from "@/lib/phoenix-products";
 import { phoenixCategories, phoenixProducts } from "@/lib/phoenix-products";
 
@@ -198,6 +198,15 @@ export function EnquirySection({
   defaultRequestType?: string;
 }) {
   const [intent, setIntent] = useState(defaultRequestType);
+  useEffect(() => {
+    function syncIntent() {
+      if (window.location.hash === "#catalogue") setIntent("catalogue_request");
+      if (window.location.hash === "#enquiry") setIntent(defaultRequestType);
+    }
+    syncIntent();
+    window.addEventListener("hashchange", syncIntent);
+    return () => window.removeEventListener("hashchange", syncIntent);
+  }, [defaultRequestType]);
   return (
     <section className="section phoenix-enquiry" id="enquiry">
       <div className="shell">
@@ -225,7 +234,7 @@ export function EnquirySection({
         <div id="catalogue" className="button-row">
           <a className="button phoenix-red" href="#request_type" onClick={() => setIntent("catalogue_request")}>{locale === "de" ? "VOLLSTÄNDIGEN PHOENIX KATALOG ANFORDERN" : "REQUEST FULL PHOENIX CATALOGUE"}</a>
         </div>
-        <PhoenixEnquiryForm key={intent} catalogue={catalogue} productInfo={productInfo} locale={locale} product={product} defaultRequestType={intent} />
+        <PhoenixEnquiryForm request={intent} onRequestChange={setIntent} catalogue={catalogue} productInfo={productInfo} locale={locale} product={product} defaultRequestType={defaultRequestType} />
       </div>
     </section>
   );
@@ -235,10 +244,14 @@ function PhoenixEnquiryForm({
   locale,
   product,
   productInfo,
+  request,
+  onRequestChange,
   catalogue = "full",
   defaultRequestType,
 }: {
   locale: PhoenixLocale;
+  request: string;
+  onRequestChange: (request: string) => void;
   product?: PhoenixProduct;
   productInfo?: {name: string; model: string};
   catalogue?: Catalogue;
@@ -247,7 +260,6 @@ function PhoenixEnquiryForm({
   const de = locale === "de";
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [leadReference, setLeadReference] = useState("");
-  const [request, setRequest] = useState(defaultRequestType);
   const [download, setDownload] = useState("");
   async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -271,7 +283,7 @@ function PhoenixEnquiryForm({
         setDownload("/downloads/phoenix/" + selection);
       }
       form.reset();
-      setRequest(defaultRequestType);
+      onRequestChange(defaultRequestType);
       setLeadReference(reference);
       setStatus("success");
     } catch {
@@ -308,7 +320,7 @@ function PhoenixEnquiryForm({
       </div>
       <div>
         <label htmlFor="request_type">{de ? "Art der Anfrage" : "Enquiry type"}</label>
-        <select id="request_type" name="request_type" required value={request} onChange={event => setRequest(event.target.value)}>
+        <select id="request_type" name="request_type" required value={request} onChange={event => onRequestChange(event.target.value)}>
           <option value="catalogue_request">{de ? "Vollständigen Phoenix Katalog anfordern" : "Request full Phoenix catalogue"}</option>
           <option value="quotation">{de ? "Angebot anfordern" : "Request a quotation"}</option>
           <option value="rig_configuration">{de ? "Kommerzielles Rig konfigurieren" : "Configure a commercial rig"}</option>
