@@ -45,6 +45,6 @@ if (!home.includes("PHOENIX STRENGTH — COMMERCIAL GYM EQUIPMENT")) throw new E
 if (!homeDe.includes("PHOENIX STRENGTH — KOMMERZIELLE FITNESSGERÄTE")) throw new Error("German homepage Phoenix promotion is missing");
 for (const directory of ["dist/client/equipment/phoenix-strength/products", "dist/client/de/geraete/phoenix-strength/products"]) {
   const productPages = readdirSync(directory).filter((name) => name.endsWith(".html"));
-  if (productPages.length !== 15) throw new Error(`Expected 15 product pages in ${directory}, found ${productPages.length}`);
+  if (productPages.length !== 23) throw new Error(`Expected 23 product pages in ${directory}, found ${productPages.length}`);
 }
 console.log("Phoenix catalogue validation passed.");
