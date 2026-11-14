@@ -1,0 +1,274 @@
+[
+ {
+  "kind": "hub",
+  "key": "hub",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength",
+  "file": "html/equipment__phoenix-strength.html",
+  "replaces_existing": true
+ },
+ {
+  "kind": "hub",
+  "key": "hub",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength",
+  "file": "html/de__geraete__phoenix-strength.html",
+  "replaces_existing": true
+ },
+ {
+  "kind": "landing",
+  "key": "rigs",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/rigs-racks",
+  "file": "html/equipment__phoenix-strength__rigs-racks.html",
+  "replaces_existing": true
+ },
+ {
+  "kind": "landing",
+  "key": "rigs",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/rigs-racks",
+  "file": "html/de__geraete__phoenix-strength__rigs-racks.html",
+  "replaces_existing": true
+ },
+ {
+  "kind": "landing",
+  "key": "machines",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/strength-machines",
+  "file": "html/equipment__phoenix-strength__strength-machines.html",
+  "replaces_existing": true
+ },
+ {
+  "kind": "landing",
+  "key": "machines",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/strength-machines",
+  "file": "html/de__geraete__phoenix-strength__strength-machines.html",
+  "replaces_existing": true
+ },
+ {
+  "kind": "landing",
+  "key": "fitout",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/complete-gym-fit-out",
+  "file": "html/equipment__phoenix-strength__complete-gym-fit-out.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "landing",
+  "key": "fitout",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/fitnessstudio-einrichten",
+  "file": "html/de__geraete__phoenix-strength__fitnessstudio-einrichten.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "landing",
+  "key": "studio",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/hotel-corporate-studio-gyms",
+  "file": "html/equipment__phoenix-strength__hotel-corporate-studio-gyms.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "landing",
+  "key": "studio",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/hotel-firmen-studio-fitness",
+  "file": "html/de__geraete__phoenix-strength__hotel-firmen-studio-fitness.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "pendulum",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/pendulum-squat",
+  "file": "html/equipment__phoenix-strength__products__pendulum-squat.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "pendulum",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/pendulum-squat",
+  "file": "html/de__geraete__phoenix-strength__products__pendulum-squat.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "blp",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/bilateral-leg-press",
+  "file": "html/equipment__phoenix-strength__products__bilateral-leg-press.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "blp",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/bilateral-leg-press",
+  "file": "html/de__geraete__phoenix-strength__products__bilateral-leg-press.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "linlp",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/linear-leg-press",
+  "file": "html/equipment__phoenix-strength__products__linear-leg-press.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "linlp",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/linear-leg-press",
+  "file": "html/de__geraete__phoenix-strength__products__linear-leg-press.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "powersquat",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/power-squat",
+  "file": "html/equipment__phoenix-strength__products__power-squat.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "powersquat",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/power-squat",
+  "file": "html/de__geraete__phoenix-strength__products__power-squat.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "brp",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/bilateral-row",
+  "file": "html/equipment__phoenix-strength__products__bilateral-row.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "brp",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/bilateral-row",
+  "file": "html/de__geraete__phoenix-strength__products__bilateral-row.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "cp",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/chest-press-adjustable",
+  "file": "html/equipment__phoenix-strength__products__chest-press-adjustable.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "cp",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/chest-press-adjustable",
+  "file": "html/de__geraete__phoenix-strength__products__chest-press-adjustable.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "lpr",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/bilateral-lat-pull-down",
+  "file": "html/equipment__phoenix-strength__products__bilateral-lat-pull-down.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "lpr",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/bilateral-lat-pull-down",
+  "file": "html/de__geraete__phoenix-strength__products__bilateral-lat-pull-down.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "plc",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/prone-leg-curl-plate-loaded",
+  "file": "html/equipment__phoenix-strength__products__prone-leg-curl-plate-loaded.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "plc",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/prone-leg-curl-plate-loaded",
+  "file": "html/de__geraete__phoenix-strength__products__prone-leg-curl-plate-loaded.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "ssncc",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/sissy-squat-nordic-curl-combo",
+  "file": "html/equipment__phoenix-strength__products__sissy-squat-nordic-curl-combo.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "ssncc",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/sissy-squat-nordic-curl-combo",
+  "file": "html/de__geraete__phoenix-strength__products__sissy-squat-nordic-curl-combo.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "ftu",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/functional-trainer-ultra",
+  "file": "html/equipment__phoenix-strength__products__functional-trainer-ultra.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "ftu",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/functional-trainer-ultra",
+  "file": "html/de__geraete__phoenix-strength__products__functional-trainer-ultra.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "lr",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/lateral-raise",
+  "file": "html/equipment__phoenix-strength__products__lateral-raise.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "lr",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/lateral-raise",
+  "file": "html/de__geraete__phoenix-strength__products__lateral-raise.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "shc",
+  "lang": "en",
+  "url": "/equipment/phoenix-strength/products/seated-hamstring-curl-pin-loaded",
+  "file": "html/equipment__phoenix-strength__products__seated-hamstring-curl-pin-loaded.html",
+  "replaces_existing": false
+ },
+ {
+  "kind": "product",
+  "key": "shc",
+  "lang": "de",
+  "url": "/de/geraete/phoenix-strength/products/seated-hamstring-curl-pin-loaded",
+  "file": "html/de__geraete__phoenix-strength__products__seated-hamstring-curl-pin-loaded.html",
+  "replaces_existing": false
+ }
+]
