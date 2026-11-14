@@ -266,6 +266,13 @@ function PhoenixEnquiryForm({
     const form = event.currentTarget;
     const data = new FormData(form);
     const reference = `L4G-PHX-${Date.now().toString(36).toUpperCase()}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
+    const selection = data.get("catalogue_interest");
+    const requestedCatalogue = data.get("request_type") === "catalogue_request"
+      && typeof selection === "string" && Object.values(catalogues).includes(selection)
+      ? selection : null;
+    if (requestedCatalogue) {
+      data.set("subject", "Phoenix Strength catalogue request: " + requestedCatalogue);
+    }
     data.set("lead_reference", reference);
     data.set("source_page", window.location.pathname);
     setDownload("");
@@ -278,9 +285,8 @@ function PhoenixEnquiryForm({
         body: new URLSearchParams(Array.from(data.entries()).map(([key,value])=>[key,String(value)])).toString(),
       });
       if (!response.ok) throw new Error(`Submission failed: ${response.status}`);
-      const selection = data.get("catalogue_interest");
-      if (data.get("request_type") === "catalogue_request" && Object.values(catalogues).includes(String(selection))) {
-        setDownload("/downloads/phoenix/" + selection);
+      if (requestedCatalogue) {
+        setDownload("/downloads/phoenix/" + requestedCatalogue);
       }
       form.reset();
       onRequestChange(defaultRequestType);
@@ -331,10 +337,10 @@ function PhoenixEnquiryForm({
         </select>
       </div>
       <div>
-        {request === "catalogue_request" && <label>{de ? "Gewünschter EU-Katalog" : "EU catalogue"}
-          <select name="catalogue_interest" defaultValue={catalogues[catalogue]} required>{Object.entries(catalogues).map(([key, file]) =>
+        <div hidden={request !== "catalogue_request"}><label>{de ? "Gewünschter EU-Katalog" : "EU catalogue"}
+          <select name="catalogue_interest" defaultValue={catalogues[catalogue]} disabled={request !== "catalogue_request"} required={request === "catalogue_request"}>{Object.entries(catalogues).map(([key, file]) =>
             <option key={key} value={file}>{file.replace("Phoenix-", "").replace("-Catalogue-2026-EU.pdf", "").replaceAll("-", " ")}</option>)}</select>
-        </label>}
+        </label></div>
         <label htmlFor="country">{de ? "Land" : "Country"}</label>
         <input id="country" name="country" required />
       </div>

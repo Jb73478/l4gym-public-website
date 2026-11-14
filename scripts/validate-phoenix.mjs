@@ -61,7 +61,7 @@ for (const { url, key, lang } of routes) {
   for (const expected of [
     '<html lang="' + lang + '">',
     '<link rel="canonical" href="https://l4gym.com' + canonical + '"',
-    'hrefLang="x-default"', 'name="source_page"'
+    'hrefLang="x-default"', 'name="source_page"', 'name="catalogue_interest"'
   ]) {
     if (!html.includes(expected)) throw Error(canonical + " missing " + expected);
   }
