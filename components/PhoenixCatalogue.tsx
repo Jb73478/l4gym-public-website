@@ -1,5 +1,7 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import catalogues from "@/lib/phoenix-v3/catalogues.json";
+type Catalogue = keyof typeof catalogues;
+import { useEffect, useState, type FormEvent } from "react";
 import type { PhoenixLocale, PhoenixProduct } from "@/lib/phoenix-products";
 import { phoenixCategories, phoenixProducts } from "@/lib/phoenix-products";
 
@@ -185,12 +187,26 @@ export function ProductGrid({
 export function EnquirySection({
   locale,
   product,
+  productInfo,
+  catalogue = "full",
   defaultRequestType = "general_equipment_enquiry",
 }: {
   locale: PhoenixLocale;
   product?: PhoenixProduct;
+  productInfo?: {name: string; model: string};
+  catalogue?: Catalogue;
   defaultRequestType?: string;
 }) {
+  const [intent, setIntent] = useState(defaultRequestType);
+  useEffect(() => {
+    function syncIntent() {
+      if (window.location.hash === "#catalogue") setIntent("catalogue_request");
+      if (window.location.hash === "#enquiry") setIntent(defaultRequestType);
+    }
+    syncIntent();
+    window.addEventListener("hashchange", syncIntent);
+    return () => window.removeEventListener("hashchange", syncIntent);
+  }, [defaultRequestType]);
   return (
     <section className="section phoenix-enquiry" id="enquiry">
       <div className="shell">
@@ -215,7 +231,10 @@ export function EnquirySection({
               : "Share the essential project details. The secure form sends a structured enquiry directly to L4Gym."}
           </p>
         </div>
-        <PhoenixEnquiryForm key={defaultRequestType} locale={locale} product={product} defaultRequestType={defaultRequestType} />
+        <div id="catalogue" className="button-row">
+          <a className="button phoenix-red" href="#request_type" onClick={() => setIntent("catalogue_request")}>{locale === "de" ? "VOLLSTÄNDIGEN PHOENIX KATALOG ANFORDERN" : "REQUEST FULL PHOENIX CATALOGUE"}</a>
+        </div>
+        <PhoenixEnquiryForm request={intent} onRequestChange={setIntent} catalogue={catalogue} productInfo={productInfo} locale={locale} product={product} defaultRequestType={defaultRequestType} />
       </div>
     </section>
   );
@@ -224,21 +243,39 @@ export function EnquirySection({
 function PhoenixEnquiryForm({
   locale,
   product,
+  productInfo,
+  request,
+  onRequestChange,
+  catalogue = "full",
   defaultRequestType,
 }: {
   locale: PhoenixLocale;
+  request: string;
+  onRequestChange: (request: string) => void;
   product?: PhoenixProduct;
+  productInfo?: {name: string; model: string};
+  catalogue?: Catalogue;
   defaultRequestType: string;
 }) {
   const de = locale === "de";
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [leadReference, setLeadReference] = useState("");
+  const [download, setDownload] = useState("");
   async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
     const reference = `L4G-PHX-${Date.now().toString(36).toUpperCase()}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
+    const selection = data.get("catalogue_interest");
+    const requestedCatalogue = data.get("request_type") === "catalogue_request"
+      && typeof selection === "string" && Object.values(catalogues).includes(selection)
+      ? selection : null;
+    if (requestedCatalogue) {
+      data.set("subject", "Phoenix Strength catalogue request: " + requestedCatalogue);
+    }
     data.set("lead_reference", reference);
+    data.set("source_page", window.location.pathname);
+    setDownload("");
     data.set("submitted_at", new Date().toISOString());
     setStatus("sending");
     try {
@@ -248,7 +285,11 @@ function PhoenixEnquiryForm({
         body: new URLSearchParams(Array.from(data.entries()).map(([key,value])=>[key,String(value)])).toString(),
       });
       if (!response.ok) throw new Error(`Submission failed: ${response.status}`);
+      if (requestedCatalogue) {
+        setDownload("/downloads/phoenix/" + requestedCatalogue);
+      }
       form.reset();
+      onRequestChange(defaultRequestType);
       setLeadReference(reference);
       setStatus("success");
     } catch {
@@ -259,6 +300,7 @@ function PhoenixEnquiryForm({
     <form className="phoenix-form" name="phoenix-strength-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitEnquiry}>
       <input type="hidden" name="form-name" value="phoenix-strength-enquiry" />
       <input type="hidden" name="lead_source" value="l4gym-phoenix-catalogue" />
+      <input type="hidden" name="source_page" value="" />
       <input type="hidden" name="lead_reference" value="" />
       <input type="hidden" name="l4gym_attribution" value="Introduced by L4Gym / Jamie Bevan" />
       <input type="hidden" name="sales_channel" value="l4gym.com" />
@@ -266,8 +308,8 @@ function PhoenixEnquiryForm({
       <input type="hidden" name="introduction_status" value="captured_by_l4gym" />
       <input type="hidden" name="commission_status" value="not_yet_applicable" />
       <input type="hidden" name="language" value={locale} />
-      <input type="hidden" name="product_name" value={product?.name || "Commercial project"} />
-      <input type="hidden" name="product_sku" value={product?.model || ""} />
+      <input type="hidden" name="product_name" value={productInfo?.name || product?.name || "Commercial project"} />
+      <input type="hidden" name="product_sku" value={productInfo?.model || product?.model || ""} />
       <input type="hidden" name="subject" value="New Phoenix Strength commercial enquiry" data-remove-prefix />
       <p className="form-honeypot" aria-hidden="true"><label>Do not complete this field<input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
       <div>
@@ -284,7 +326,7 @@ function PhoenixEnquiryForm({
       </div>
       <div>
         <label htmlFor="request_type">{de ? "Art der Anfrage" : "Enquiry type"}</label>
-        <select id="request_type" name="request_type" required defaultValue={defaultRequestType}>
+        <select id="request_type" name="request_type" required value={request} onChange={event => onRequestChange(event.target.value)}>
           <option value="catalogue_request">{de ? "Vollständigen Phoenix Katalog anfordern" : "Request full Phoenix catalogue"}</option>
           <option value="quotation">{de ? "Angebot anfordern" : "Request a quotation"}</option>
           <option value="rig_configuration">{de ? "Kommerzielles Rig konfigurieren" : "Configure a commercial rig"}</option>
@@ -295,6 +337,10 @@ function PhoenixEnquiryForm({
         </select>
       </div>
       <div>
+        <div hidden={request !== "catalogue_request"}><label>{de ? "Gewünschter EU-Katalog" : "EU catalogue"}
+          <select name="catalogue_interest" defaultValue={catalogues[catalogue]} disabled={request !== "catalogue_request"} required={request === "catalogue_request"}>{Object.entries(catalogues).map(([key, file]) =>
+            <option key={key} value={file}>{file.replace("Phoenix-", "").replace("-Catalogue-2026-EU.pdf", "").replaceAll("-", " ")}</option>)}</select>
+        </label></div>
         <label htmlFor="country">{de ? "Land" : "Country"}</label>
         <input id="country" name="country" required />
       </div>
@@ -331,7 +377,7 @@ function PhoenixEnquiryForm({
           name="equipment_interest"
           required
           defaultValue={
-            product
+            productInfo ? productInfo.name : product
               ? `${product.name}${product.model ? ` (${product.model})` : ""}`
               : ""
           }
@@ -372,6 +418,7 @@ function PhoenixEnquiryForm({
             : "Your enquiry is submitted securely to L4Gym. No online payment is taken."}
         </p>
         <div className={`form-status ${status}`} role="status" aria-live="polite">{status==="success"&&(de?`Vielen Dank. Ihre Anfrage wurde erfolgreich gesendet. Referenz: ${leadReference}. L4Gym meldet sich direkt bei Ihnen.`:`Thank you. Your enquiry was sent successfully. Reference: ${leadReference}. L4Gym will contact you directly.`)}{status==="error"&&(de?"Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an jamie@l4gym.com.":"Your enquiry could not be sent. Please try again or email jamie@l4gym.com.")}</div>
+        {status === "success" && download && <a className="button primary" href={download} download>{de ? "PDF-Katalog herunterladen" : "Download PDF catalogue"}</a>}
       </div>
     </form>
   );

@@ -1,4 +1,7 @@
-import type { Metadata } from "next";
-import { PhoenixLanding } from "@/components/PhoenixCatalogue";
-export const metadata: Metadata = { title: "Phoenix Strength Commercial Rigs & Gym Equipment", description: "Explore Phoenix Strength commercial rigs, cages, selected strength equipment and complete gym fit-out enquiries through L4Gym.", alternates: { canonical: "/equipment/phoenix-strength", languages: { en: "/equipment/phoenix-strength", de: "/de/geraete/phoenix-strength" } } };
-export default function Page() { return <PhoenixLanding locale="en" />; }
+import { PhoenixV3Page } from "@/components/PhoenixV3Page";
+import { pageMetadata } from "@/lib/phoenix-v3/pages";
+
+export const metadata = pageMetadata("hub", "en");
+export default function Page() {
+  return <PhoenixV3Page locale="en" pageKey="hub" />;
+}
