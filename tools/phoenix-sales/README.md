@@ -1,0 +1,19 @@
+# Phoenix sales tracker
+
+Close the master in Excel and let OneDrive finish syncing. In the Netlify project, open Forms → phoenix-strength-enquiry → Verified submissions → Download as CSV. On the configured Windows workstation double-click **Import Phoenix leads.cmd**, select the downloaded CSV, and read the added/skipped totals. Import the full verified export each time. Keep the export private and remove it under your normal retention policy. Reopen the master after OneDrive finishes syncing.
+
+Open **Sales dashboard** first. Filter **Website leads** by Next action for first contact or overdue follow-up. Resolve **Review** rows by checking the original enquiry: choose Lead for genuine business or Test for internal checks. Prior catalogue selections that were never captured stay blank. A repeat export skips existing references, including manually classified rows.
+
+After a call or email, enter the owner, last contact, next follow-up date, notes and stage. Enter the currency for every monetary amount. Enter confirmed order value only against a confirmed order, and enter the commission rate as a percentage (e.g. 7.5%). Expected commission uses those inputs. Enter approved commission only on approval, and paid commission only on receipt. Change the dashboard currency to see totals in that currency. Keep different currencies on separate opportunities; the workbook does not convert exchange rates. Existing distributor prospects retain their original Status, Last Contact and Next Action on Phoenix Leads. Historical Contacted statuses map to Contacted and Rejected to Lost. Holds and research have no assigned sales stage.
+
+If an import fails, keep the CSV. Close Excel, check the reported row or file error, correct the source or use a private corrected CSV copy, then rerun. The import validates the batch before replacement. Its local log is %TEMP%\phoenix-import.log and contains counts and error types. Coordinate edits with other OneDrive users and allow sync to finish before importing.
+
+For another Windows workstation, install Python 3 and openpyxl 3.1.x, then run:
+
+    python import_leads.py "path to existing master.xlsx" "verified export.csv"
+
+Use --historical for backfills so unconfirmed historical records go to Review. First installation expects the original Phoenix Leads schema. Test with python test_import.py in this directory. The import writes only to the private workbook. No website change, customer messaging, subscription or cloud credentials are required. The CSV export and import are operator-triggered.
+
+**Backup and recovery.** A changing import makes a dated UTC backup in **Phoenix CRM backups**, beside the master. It compares the backup byte for byte with the starting workbook and reopens it before replacing the master. A repeated import with no changes needs no backup. If recovery is necessary, close Excel on all devices and wait for OneDrive. Copy the current master to a separate private recovery folder. Open the desired dated backup read-only, verify the prospects, references and dates, close it, and copy it over the master using the exact original filename. Let OneDrive sync, then reopen and verify. Restoring discards changes after that backup; reconcile newer notes from the saved copy. Do not import while OneDrive shows a conflict, is offline, or another person is editing. A local lock cannot detect unsynced remote edits.
+
+**Daily review.** All new entries start as Review unless identified as internal tests. Mark genuine enquiries Lead after checking the source. Set Owner, Stage and Next follow-up. Filter Last contact for blanks as well as checking overdue actions. The dashboard counts current stages; monetary totals include only Lead records at Order Confirmed or Order Completed, in the selected currency. Keep a confirmed order in those stages for reporting. Sales contact: jamie@l4gym.com. Nothing sends email.
