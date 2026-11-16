@@ -1,12 +1,495 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.l4gym.com/</loc></url>
-  <url><loc>https://www.l4gym.com/what-we-do</loc></url>
-  <url><loc>https://www.l4gym.com/machinedna</loc></url>
-  <url><loc>https://www.l4gym.com/equipment</loc></url>
-  <url><loc>https://www.l4gym.com/service-support</loc></url>
-  <url><loc>https://www.l4gym.com/manufacturers-oem</loc></url>
-  <url><loc>https://www.l4gym.com/distributors-partners</loc></url>
-  <url><loc>https://www.l4gym.com/about</loc></url>
-  <url><loc>https://www.l4gym.com/contact</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://l4gym.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/about"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/contact"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/datenschutz</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/benches-accessories</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/benches-accessories"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/benches-accessories"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/benches-accessories"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/fitnessstudio-einrichten</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/fitnessstudio-einrichten"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/complete-gym-fit-out"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/complete-gym-fit-out"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/hotel-firmen-studio-fitness</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/hotel-firmen-studio-fitness"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/hotel-corporate-studio-gyms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/hotel-corporate-studio-gyms"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-lat-pull-down</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-lat-pull-down"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-lat-pull-down"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-lat-pull-down"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-leg-press</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-leg-press"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-row</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-row"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-row"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-row"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/chest-press-adjustable</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/chest-press-adjustable"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/chest-press-adjustable"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/chest-press-adjustable"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/chest-supported-lever-row</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/chest-supported-lever-row"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/chest-supported-lever-row"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/chest-supported-lever-row"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/commercial-rig-systems</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/commercial-rig-systems"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/commercial-rig-systems"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/commercial-rig-systems"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/functional-trainer-ultra</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/functional-trainer-ultra"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/functional-trainer-ultra"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/functional-trainer-ultra"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/hack-squat-45</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/hack-squat-45"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/hack-squat-45"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/hack-squat-45"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/hd-squat-stand</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/hd-squat-stand"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/hd-squat-stand"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/hd-squat-stand"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/lateral-raise</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lateral-raise"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lateral-raise"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lateral-raise"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/lcpc-pro</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lcpc-pro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lcpc-pro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lcpc-pro"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/lever-belt-squat</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lever-belt-squat"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lever-belt-squat"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lever-belt-squat"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/lever-leg-press</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lever-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lever-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lever-leg-press"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/linear-leg-press</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/linear-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/linear-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/linear-leg-press"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/pendulum-squat-v2</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/pendulum-squat-v2"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/pendulum-squat-v2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/pendulum-squat-v2"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/power-bands</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/power-bands"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/power-bands"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/power-bands"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/power-squat</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/power-squat"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/power-squat"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/power-squat"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/prone-leg-curl-plate-loaded</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/prone-leg-curl-plate-loaded"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/prone-leg-curl-plate-loaded"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/prone-leg-curl-plate-loaded"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/pspx2-half-cage</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/pspx2-half-cage"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/pspx2-half-cage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/pspx2-half-cage"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/seated-hamstring-curl-pin-loaded</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/seated-hamstring-curl-pin-loaded"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/seated-hamstring-curl-pin-loaded"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/seated-hamstring-curl-pin-loaded"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/sissy-squat-nordic-curl-combo</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/sissy-squat-nordic-curl-combo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/sissy-squat-nordic-curl-combo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/sissy-squat-nordic-curl-combo"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/ultra-row</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/ultra-row"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/ultra-row"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/ultra-row"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/products/z4-fid-bench</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/z4-fid-bench"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/z4-fid-bench"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/z4-fid-bench"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/rigs-racks</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/rigs-racks"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/rigs-racks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/rigs-racks"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/geraete/phoenix-strength/strength-machines</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/strength-machines"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/strength-machines"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/strength-machines"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/hersteller-oem</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/hersteller-oem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/manufacturers-oem"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/manufacturers-oem"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/impressum</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/imprint"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/imprint"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/kontakt</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/kontakt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/contact"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/machinedna</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/machinedna"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/machinedna"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/machinedna"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/rechtliches</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/rechtliches"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/legal"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/service-support</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/service-support"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/service-support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/service-support"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/ueber-uns</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/ueber-uns"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/about"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/vertriebspartner</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/vertriebspartner"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/distributors-partners"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/distributors-partners"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/de/was-wir-tun</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/was-wir-tun"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/what-we-do"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/what-we-do"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/distributors-partners</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/vertriebspartner"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/distributors-partners"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/distributors-partners"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/benches-accessories</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/benches-accessories"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/benches-accessories"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/benches-accessories"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/complete-gym-fit-out</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/fitnessstudio-einrichten"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/complete-gym-fit-out"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/complete-gym-fit-out"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/hotel-corporate-studio-gyms</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/hotel-firmen-studio-fitness"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/hotel-corporate-studio-gyms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/hotel-corporate-studio-gyms"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/bilateral-lat-pull-down</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-lat-pull-down"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-lat-pull-down"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-lat-pull-down"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/bilateral-leg-press</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-leg-press"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/bilateral-row</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/bilateral-row"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-row"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/bilateral-row"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/chest-press-adjustable</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/chest-press-adjustable"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/chest-press-adjustable"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/chest-press-adjustable"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/chest-supported-lever-row</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/chest-supported-lever-row"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/chest-supported-lever-row"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/chest-supported-lever-row"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/commercial-rig-systems</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/commercial-rig-systems"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/commercial-rig-systems"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/commercial-rig-systems"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/functional-trainer-ultra</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/functional-trainer-ultra"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/functional-trainer-ultra"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/functional-trainer-ultra"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/hack-squat-45</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/hack-squat-45"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/hack-squat-45"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/hack-squat-45"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/hd-squat-stand</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/hd-squat-stand"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/hd-squat-stand"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/hd-squat-stand"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/lateral-raise</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lateral-raise"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lateral-raise"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lateral-raise"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/lcpc-pro</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lcpc-pro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lcpc-pro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lcpc-pro"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/lever-belt-squat</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lever-belt-squat"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lever-belt-squat"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lever-belt-squat"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/lever-leg-press</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/lever-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/lever-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/lever-leg-press"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/linear-leg-press</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/linear-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/linear-leg-press"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/linear-leg-press"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/pendulum-squat-v2</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/pendulum-squat-v2"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/pendulum-squat-v2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/pendulum-squat-v2"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/power-bands</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/power-bands"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/power-bands"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/power-bands"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/power-squat</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/power-squat"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/power-squat"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/power-squat"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/prone-leg-curl-plate-loaded</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/prone-leg-curl-plate-loaded"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/prone-leg-curl-plate-loaded"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/prone-leg-curl-plate-loaded"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/pspx2-half-cage</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/pspx2-half-cage"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/pspx2-half-cage"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/pspx2-half-cage"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/seated-hamstring-curl-pin-loaded</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/seated-hamstring-curl-pin-loaded"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/seated-hamstring-curl-pin-loaded"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/seated-hamstring-curl-pin-loaded"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/sissy-squat-nordic-curl-combo</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/sissy-squat-nordic-curl-combo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/sissy-squat-nordic-curl-combo"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/sissy-squat-nordic-curl-combo"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/ultra-row</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/ultra-row"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/ultra-row"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/ultra-row"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/products/z4-fid-bench</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/products/z4-fid-bench"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/products/z4-fid-bench"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/products/z4-fid-bench"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/rigs-racks</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/rigs-racks"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/rigs-racks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/rigs-racks"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/equipment/phoenix-strength/strength-machines</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/geraete/phoenix-strength/strength-machines"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/equipment/phoenix-strength/strength-machines"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/equipment/phoenix-strength/strength-machines"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/imprint</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/impressum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/imprint"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/imprint"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/legal</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/rechtliches"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/legal"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/machinedna</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/machinedna"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/machinedna"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/machinedna"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/manufacturers-oem</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/hersteller-oem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/manufacturers-oem"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/manufacturers-oem"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/service-support</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/service-support"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/service-support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/service-support"/>
+  </url>
+  <url>
+    <loc>https://l4gym.com/what-we-do</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://l4gym.com/de/was-wir-tun"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://l4gym.com/what-we-do"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://l4gym.com/what-we-do"/>
+  </url>
 </urlset>

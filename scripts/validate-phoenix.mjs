@@ -45,6 +45,33 @@ if (!home.includes("PHOENIX STRENGTH — COMMERCIAL GYM EQUIPMENT")) throw new E
 if (!homeDe.includes("PHOENIX STRENGTH — KOMMERZIELLE FITNESSGERÄTE")) throw new Error("German homepage Phoenix promotion is missing");
 for (const directory of ["dist/client/equipment/phoenix-strength/products", "dist/client/de/geraete/phoenix-strength/products"]) {
   const productPages = readdirSync(directory).filter((name) => name.endsWith(".html"));
-  if (productPages.length !== 15) throw new Error(`Expected 15 product pages in ${directory}, found ${productPages.length}`);
+  if (productPages.length !== 23) throw new Error(`Expected 23 product pages in ${directory}, found ${productPages.length}`);
 }
 console.log("Phoenix catalogue validation passed.");
+
+const routes = JSON.parse(readFileSync("lib/phoenix-v3/routes.json", "utf8"));
+const redirects = readFileSync("dist/client/_redirects", "utf8");
+const sitemap = readFileSync("dist/client/sitemap.xml", "utf8");
+for (const { url, key, lang } of routes) {
+  const canonical = key === "pendulum" ? url + "-v2" : url;
+  if (url !== canonical && !redirects.includes(url + " " + canonical + " 301")) {
+    throw Error("Missing PDS2 redirect: " + url);
+  }
+  const html = readFileSync("dist/client" + canonical + ".html", "utf8");
+  for (const expected of [
+    '<html lang="' + lang + '">',
+    '<link rel="canonical" href="https://l4gym.com' + canonical + '"',
+    'hrefLang="x-default"', 'name="source_page"', 'name="catalogue_interest"'
+  ]) {
+    if (!html.includes(expected)) throw Error(canonical + " missing " + expected);
+  }
+  if (!sitemap.includes("<loc>https://l4gym.com" + canonical + "</loc>")) throw Error("Missing sitemap URL " + canonical);
+}
+for (const field of ["source_page", "catalogue_interest", "privacy_consent", "bot-field"]) {
+  if (!blueprint.includes('name="' + field + '"')) throw Error("Missing static Netlify field " + field);
+}
+for (const file of Object.values(JSON.parse(readFileSync("lib/phoenix-v3/catalogues.json", "utf8")))) {
+  const pdf = readFileSync("dist/client/downloads/phoenix/" + file);
+  if (pdf.subarray(0, 5).toString() !== "%PDF-" || !pdf.subarray(-128).includes("%%EOF")) throw Error("Invalid PDF " + file);
+}
+console.log("All 34 V3 route mappings, canonical URLs, locale declarations, form fields and four EU PDFs passed.");

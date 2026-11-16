@@ -96,13 +96,36 @@ def literal(cell, value):
         cell.data_type="s"
 
 def sync(target, export, historical=False):
+    if target.with_name("~$"+target.name).exists():
+        raise ValueError("Close Excel and wait for OneDrive to finish syncing")
     initial=target.read_bytes()
     from io import BytesIO
     book=load_workbook(BytesIO(initial))
     fresh="Website leads" not in book.sheetnames
     sheet=setup(book) if fresh else book["Website leads"]
+    dash=book["Sales dashboard"]
+    def ledger(stage):
+        return f'=COUNTIFS(\'Website leads\'!B:B,"Lead",\'Website leads\'!C:C,"{stage}")'
+    updates={15:("Qualified opportunities","Qualified"),16:("Quotations requested","Quotation Requested"),17:("Quotations sent","Quotation Sent")}
+    changed=False
+    for row,(label,stage) in updates.items():
+        if dash.cell(row,1).value not in (None,label):
+            raise ValueError("Dashboard layout changed; review before migration")
+        if dash.cell(row,1).value is None:
+            if any(c.value is not None for c in dash[row]): raise ValueError("Dashboard row in use")
+            dash.cell(row,1,label); dash.cell(row,2,ledger(stage)); changed=True
+    if dash["B2"].value==ledger("First contact").replace("!C:C","!W:W"):
+        dash["B2"]='=COUNTIFS(\'Website leads\'!B:B,"Lead",\'Website leads\'!L:L,"",\'Website leads\'!C:C,"<>Lost",\'Website leads\'!C:C,"<>Won",\'Website leads\'!C:C,"<>Order Completed",\'Website leads\'!C:C,"<>Order Confirmed")'
+        changed=True
+    # Financial results only include confirmed/completed orders; never sum currencies.
+    for row,col in [(11,"R"),(12,"T"),(13,"U"),(14,"V")]:
+        prev=f'=SUMIFS(\'Website leads\'!{col}:{col},\'Website leads\'!B:B,"Lead",\'Website leads\'!P:P,B10)'
+        terms=[prev[1:-1]+f',\'Website leads\'!C:C,"{stage}")' for stage in ("Order Confirmed","Order Completed")]
+        if dash.cell(row,2).value==prev:
+            dash.cell(row,2,"="+"+".join(terms)); changed=True
     if [c.value for c in sheet[1]]!=HEAD: raise ValueError("Unexpected website lead columns")
     known={str(r[0]).upper():r for r in list(sheet.values)[1:] if r[0]}
+    if len(known)!=sheet.max_row-1: raise ValueError("Missing or duplicate reference in tracker")
     added=skipped=0
     with export.open(encoding="utf-8-sig",newline="") as handle:
         reader=csv.DictReader(handle,strict=True)
@@ -112,7 +135,7 @@ def sync(target, export, historical=False):
         for line,row in enumerate(reader,2):
             ref=(row.get("lead_reference") or "").strip().upper()
             stamp=row.get("created_at") or row.get("submitted_at")
-            if None in row or not re.fullmatch(r"L4G-PHX-[A-Z0-9]+-[A-Z0-9]+",ref) or not all((stamp,row["email"],row["request_type"])):
+            if None in row or None in row.values() or not re.fullmatch(r"L4G-PHX-[A-Z0-9]+-[A-Z0-9]+",ref) or not all((stamp,row["email"].strip(),row["request_type"].strip())):
                 raise ValueError(f"Invalid required fields in CSV row {line}")
             received=datetime.fromisoformat(stamp.replace("Z","+00:00"))
             if received.tzinfo is None: raise ValueError(f"Missing timezone in CSV row {line}")
@@ -121,7 +144,7 @@ def sync(target, export, historical=False):
                     raise ValueError(f"Conflicting reference in CSV row {line}")
                 skipped+=1
                 continue
-            classification="Review" if historical or not row.get("source_page") or row.get("privacy_consent")!="yes" else "Lead"
+            classification="Review"
             if ref in TESTS or re.search(r"\b(acceptance test|internal test|funktionstest)\b",row.get("facility_requirements",""),re.I):
                 classification="Test"
             kind=row["request_type"]
@@ -136,14 +159,24 @@ def sync(target, export, historical=False):
             sheet.cell(n,23,f'=IF(B{n}<>"Lead",B{n},IF(OR(C{n}="Won",C{n}="Lost",C{n}="Order Completed"),"Closed",IF(AND(ISNUMBER(M{n}),M{n}<TODAY()),"Overdue",IF(L{n}="","First contact",IF(M{n}="","Schedule follow-up","Follow up")))))')
             known[ref]=tuple(c.value for c in sheet[n])
             added+=1
-    if added or fresh:
+    if added or fresh or changed:
         sheet.auto_filter.ref=sheet.dimensions
         with tempfile.TemporaryDirectory(dir=target.parent) as private:
             out=Path(private)/target.name
             book.save(out)
             checked=load_workbook(out,read_only=True)
-            assert checked[sheet.title].max_row==sheet.max_row
+            if checked[sheet.title].max_row!=sheet.max_row: raise ValueError("Saved row count mismatch")
             checked.close()
+            backups=target.parent/"Phoenix CRM backups"
+            backups.mkdir(exist_ok=True)
+            backup=backups/(target.stem+"-"+datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")+".xlsx")
+            with backup.open("xb") as f:
+                f.write(initial); f.flush(); os.fsync(f.fileno())
+            if backup.read_bytes()!=initial: raise ValueError("Backup verification failed")
+            with backup.open("rb") as f:
+                saved=load_workbook(f)
+                if "Phoenix Leads" not in saved: raise ValueError("Unreadable prospect backup")
+                saved.close()
             if target.read_bytes()!=initial or target.with_name("~$"+target.name).exists():
                 raise ValueError("Workbook changed or open; close Excel and retry")
             os.replace(out,target)
@@ -172,3 +205,4 @@ if __name__=="__main__":
     except Exception as exc:
         logging.error("Import failed (%s). Original CSV can be retried.",type(exc).__name__)
         raise SystemExit(f"Import failed: {exc}")
+

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteDocument } from "@/components/SiteDocument";
 import { Header, Footer, SkipLink } from "@/components/SiteChrome";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.l4gym.com"),
+  metadataBase: new URL("https://l4gym.com"),
   title: { default: "L4Gym | Connected Fitness Equipment Infrastructure", template: "%s | L4Gym" },
   description: "L4Gym connects fitness equipment, gym operations and technical service across the equipment lifecycle.",
   alternates: { canonical: "./" },
@@ -34,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body><SkipLink/><Header/><main id="main">{children}</main><Footer/></body>
-    </html>
+    <SiteDocument>
+      <SkipLink/><Header/><main id="main">{children}</main><Footer/>
+    </SiteDocument>
   );
 }
