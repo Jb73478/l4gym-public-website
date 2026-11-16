@@ -21,3 +21,8 @@
 @media(max-width:380px){.phoenix-hero h1{font-size:2.2rem}.phoenix-hero-visual{min-height:310px}.phoenix-hero-visual>img{height:310px}}
 
 .phoenix-gallery{min-width:0}.phoenix-thumbs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.phoenix-thumbs button{background:white;border:2px solid transparent;padding:2px}.phoenix-thumbs button[aria-pressed=true]{border-color:#d71920}.phoenix-thumbs img{width:64px;height:64px;object-fit:contain}.phoenix-enquiry [id]{scroll-margin-top:6rem}
+
+/* Direct commercial enquiries open above the gallery, even as its images load. */
+html:has(#project-enquiry:target) { scroll-behavior: auto; }
+main:has(#project-enquiry:target) { display: flex; flex-direction: column; }
+main:has(#project-enquiry:target) > .phoenix-enquiry { order: -1; }

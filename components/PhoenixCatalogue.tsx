@@ -207,6 +207,7 @@ export function EnquirySection({
     window.addEventListener("hashchange", syncIntent);
     return () => window.removeEventListener("hashchange", syncIntent);
   }, [defaultRequestType]);
+
   return (
     <section className="section phoenix-enquiry" id="enquiry">
       <div className="shell">
@@ -297,7 +298,7 @@ function PhoenixEnquiryForm({
     }
   }
   return (
-    <form className="phoenix-form" name="phoenix-strength-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitEnquiry}>
+    <form id="project-enquiry" className="phoenix-form" name="phoenix-strength-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitEnquiry}>
       <input type="hidden" name="form-name" value="phoenix-strength-enquiry" />
       <input type="hidden" name="lead_source" value="l4gym-phoenix-catalogue" />
       <input type="hidden" name="source_page" value="" />
