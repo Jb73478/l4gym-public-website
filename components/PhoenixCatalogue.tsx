@@ -207,20 +207,7 @@ export function EnquirySection({
     window.addEventListener("hashchange", syncIntent);
     return () => window.removeEventListener("hashchange", syncIntent);
   }, [defaultRequestType]);
-  useEffect(() => {
-    // Cross-page form links can arrive before the browser has restored the fragment scroll.
-    // Retry after hydration so mobile visitors land at the selected enquiry field.
-    function scrollToFormAnchor() {
-      const hash = window.location.hash;
-      if (!["#enquiry", "#catalogue", "#request_type"].includes(hash)) return;
-      window.requestAnimationFrame(() => {
-        document.getElementById(hash.slice(1))?.scrollIntoView({ block: "start", behavior: "auto" });
-      });
-    }
-    scrollToFormAnchor();
-    window.addEventListener("hashchange", scrollToFormAnchor);
-    return () => window.removeEventListener("hashchange", scrollToFormAnchor);
-  }, []);
+
   return (
     <section className="section phoenix-enquiry" id="enquiry">
       <div className="shell">
@@ -311,7 +298,7 @@ function PhoenixEnquiryForm({
     }
   }
   return (
-    <form className="phoenix-form" name="phoenix-strength-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitEnquiry}>
+    <form id="project-enquiry" className="phoenix-form" name="phoenix-strength-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submitEnquiry}>
       <input type="hidden" name="form-name" value="phoenix-strength-enquiry" />
       <input type="hidden" name="lead_source" value="l4gym-phoenix-catalogue" />
       <input type="hidden" name="source_page" value="" />
