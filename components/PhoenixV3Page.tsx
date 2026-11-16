@@ -39,7 +39,7 @@ export function PhoenixV3Page({ pageKey, locale }: { pageKey: string; locale: Ph
     <section className="section"><div className="shell"><h2>{de ? "Häufige Fragen" : "Frequently asked questions"}</h2>
       {p.faq.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
     <EnquirySection locale={locale} catalogue={p.catalogue as Catalogue} productInfo={p.sku ? {name:p.heading, model:p.sku} : undefined}
-      defaultRequestType={p.sku ? "product_enquiry" : pageKey === "fitout" ? "complete_gym_fitout" : "quotation"} />
+      defaultRequestType={p.sku ? "product_enquiry" : pageKey === "fitout" ? "complete_gym_fitout" : pageKey === "rigs" ? "rig_configuration" : "quotation"} />
     {p.sku && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
       "@context":"https://schema.org","@type":"Product",name:p.heading,sku:p.sku,image:p.images,description:p.lead,brand:{"@type":"Brand",name:"Phoenix Strength"}
     }).replace(/</g,"\\u003c") }} />}
